@@ -1,0 +1,104 @@
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(120) NOT NULL,
+    username VARCHAR(60) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(30) NOT NULL DEFAULT 'receptionist',
+    status VARCHAR(20) NOT NULL DEFAULT 'Active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS guests (
+    guest_id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_name VARCHAR(160) NOT NULL,
+    phone VARCHAR(60) DEFAULT NULL,
+    room_no VARCHAR(40) DEFAULT NULL,
+    email VARCHAR(160) DEFAULT NULL,
+    id_type VARCHAR(60) DEFAULT NULL,
+    id_number VARCHAR(120) DEFAULT NULL,
+    id_photo VARCHAR(255) DEFAULT NULL,
+    deleted_at DATETIME DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS luggage (
+    luggage_id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_id INT NOT NULL,
+    tag_code VARCHAR(40) DEFAULT NULL,
+    luggage_type VARCHAR(120) NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    color VARCHAR(80) DEFAULT NULL,
+    storage_zone VARCHAR(80) DEFAULT NULL,
+    storage_location VARCHAR(120) DEFAULT NULL,
+    photo VARCHAR(255) DEFAULT NULL,
+    condition_flags TEXT DEFAULT NULL,
+    reservation_no VARCHAR(80) DEFAULT NULL,
+    expected_pickup_date DATE DEFAULT NULL,
+    fee_amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    payment_status VARCHAR(30) NOT NULL DEFAULT 'Unpaid',
+    payment_method VARCHAR(60) DEFAULT NULL,
+    payment_reference VARCHAR(120) DEFAULT NULL,
+    pickup_person_name VARCHAR(160) DEFAULT NULL,
+    pickup_person_phone VARCHAR(60) DEFAULT NULL,
+    pickup_person_id VARCHAR(120) DEFAULT NULL,
+    signature_path VARCHAR(255) DEFAULT NULL,
+    notification_preference VARCHAR(30) DEFAULT 'None',
+    email_sent_at DATETIME DEFAULT NULL,
+    sms_sent_at DATETIME DEFAULT NULL,
+    deleted_at DATETIME DEFAULT NULL,
+    notes TEXT DEFAULT NULL,
+    status VARCHAR(30) NOT NULL DEFAULT 'Stored',
+    checkin_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    checkout_date DATETIME DEFAULT NULL,
+    checked_out_by INT DEFAULT NULL,
+    created_by INT DEFAULT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY luggage_tag_code_unique (tag_code)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT DEFAULT NULL,
+    action VARCHAR(120) NOT NULL,
+    entity_type VARCHAR(60) DEFAULT NULL,
+    entity_id INT DEFAULT NULL,
+    details TEXT DEFAULT NULL,
+    ip_address VARCHAR(60) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS login_history (
+    login_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT DEFAULT NULL,
+    username VARCHAR(60) DEFAULT NULL,
+    success TINYINT(1) NOT NULL DEFAULT 0,
+    ip_address VARCHAR(60) DEFAULT NULL,
+    user_agent VARCHAR(255) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS storage_shelves (
+    shelf_id INT AUTO_INCREMENT PRIMARY KEY,
+    zone_name VARCHAR(80) NOT NULL,
+    shelf_name VARCHAR(120) NOT NULL,
+    capacity INT NOT NULL DEFAULT 10,
+    status VARCHAR(30) NOT NULL DEFAULT 'Active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    luggage_id INT DEFAULT NULL,
+    guest_id INT DEFAULT NULL,
+    channel VARCHAR(30) NOT NULL,
+    recipient VARCHAR(160) DEFAULT NULL,
+    message TEXT DEFAULT NULL,
+    status VARCHAR(30) NOT NULL DEFAULT 'Prepared',
+    created_by INT DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+

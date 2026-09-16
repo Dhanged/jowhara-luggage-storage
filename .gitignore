@@ -1,0 +1,18 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Runtime data and private user uploads
+/storage/*
+!/storage/.gitkeep
+/uploads/*
+!/uploads/.gitkeep
+/uploads/**
+!/**/.gitkeep
+
+# Local development files
+.idea/
+.vscode/
+*.log
+*.zip

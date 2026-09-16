@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline | Jowhara Luggage Storage</title>
+    <meta name="theme-color" content="#2563eb">
+    <style>
+        :root {
+            --brand: #2563eb;
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.7);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 90%;
+            width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--brand);
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+        }
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        p {
+            color: #94a3b8;
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+        .btn {
+            background-color: var(--brand);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+        .subtext {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle;">
+                <path d="M10.706 3.294A12.545 12.545 0 0 0 8 3C5.259 3 2.723 3.882 1 5.331L0 4.223C2.014 2.502 4.887 1.5 8 1.5c1.71 0 3.328.36 4.806 1.012l-2.1 2.1zm-2.26 2.26A8.544 8.544 0 0 0 8 5.5c-2.072 0-3.95.733-5.39 1.948l-1.01-1.011C3.328 4.966 5.527 4 8 4c.642 0 1.265.07 1.868.202l-1.42 1.352zm-2.15 2.152A4.55 4.55 0 0 0 8 7.5c-1.127 0-2.153.413-2.936 1.096l-1.01-1.01C5.176 6.574 6.51 6 8 6c.557 0 1.09.1 1.588.283l-3.292 1.425zM12.01 10c.1-.643.155-1.306.155-1.98 0-1.87-.638-3.585-1.706-4.943l1.107-1.106A11.474 11.474 0 0 1 13.665 8 11.455 11.455 0 0 1 12.01 10zm-1.896 1.042c.381-.884.591-1.865.591-2.902 0-1.352-.394-2.616-1.077-3.665l1.09-1.09A9.456 9.456 0 0 1 12.164 8 9.475 9.475 0 0 1 10.114 11.042zm-1.864 1.107c.231-.56.368-1.173.368-1.815 0-.964-.28-1.86-.764-2.6l1.09-1.09A6.471 6.471 0 0 1 9.613 8 6.482 6.482 0 0 1 8.25 12.149z"/>
+                <path d="M15.854 12.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 1 1-.708-.708L14.293 13.5l-2.147-2.146a.5.5 0 0 1 .708-.708l3 3z"/>
+                <path d="M.146 12.146a.5.5 0 0 0 0 .708l3 3a.5.5 0 1 0 .708-.708L1.707 13.5l2.147-2.146a.5.5 0 0 0-.708-.708l-3 3z"/>
+            </svg>
+        </div>
+        <h1>You're Offline</h1>
+        <p>Please check your internet connection and try again.</p>
+        <button class="btn" onclick="window.location.reload()">Try Again</button>
+        <div class="subtext">
+            Xiriirka internetka ayaa jaban<br>
+            الاتصال بالإنترنت مقطوع
+        </div>
+    </div>
+</body>
+</html>
